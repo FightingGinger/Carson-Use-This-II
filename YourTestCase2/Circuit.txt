@@ -1,0 +1,11 @@
+// IO Ports: (number inputs, number outputs)
+
+// IO Labels: (input firsts, outputs last)
+
+// Gates: (type, label)
+
+// Connections from inputs to gates (inputLabel, gateLabel, portNumber)
+
+// Connections from gate to gate (outputLabel, outputPort, inputLabel, inputPort)
+
+// Connections from gates to outputs (gateLabel, portNumber, outputLabel)
