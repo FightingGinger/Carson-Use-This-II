@@ -1,4 +1,5 @@
 
-public class Circuit {
+public class Circuit extends Executable
+{
 
 }

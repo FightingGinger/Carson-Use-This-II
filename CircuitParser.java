@@ -26,6 +26,7 @@ public class CircuitParser
 	private int numOutputs;
 	private ArrayList<String> inputLabels;
 	private ArrayList<String> outputLabels;
+	private ArrayList<Gate> Gates;
 	
 	//////////////////////////////////////////////////////////////////////////////////////
 	// Constructor
@@ -119,8 +120,8 @@ public class CircuitParser
 					// and add to a data-structure of all your gates
 					GateType gt = GateType.getTypeFromString(params[0]);
 					String label = params[1];
-					//Gate g = new Gate(gt, label); // Not yet implemented
-					//someDataStructureThatStoresYourGates.add(g);
+					Gate g = new Gate(gt, label); // IMPLEMENTED
+					Gates.add(g); //Adds the gate to the array list
 					
 				}
 				else if (lineU.startsWith(("CONN (")) || lineU.startsWith(("CONN(")))
