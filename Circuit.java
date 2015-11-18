@@ -77,7 +77,14 @@ public class Circuit extends Executable
 			
 			if(temp[0].equals("Z"))
 			{
-				indexOfFinalOutput = index;
+				for(int i = 0; i < gates.size(); i++)
+				{
+					if (gates.get(i).getLabel().equals(temp[1]))
+					{
+						indexOfFinalOutput = i;
+						break;
+					}
+				}
 				break;
 			}
 		}

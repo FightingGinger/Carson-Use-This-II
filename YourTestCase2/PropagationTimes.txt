@@ -1,1 +1,7 @@
 // Propagation Times Per Gate Type
+NOT(3)
+NAND(4)
+NOR(5)
+AND(5)
+OR(5)
+XOR(6)

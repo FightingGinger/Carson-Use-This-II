@@ -70,7 +70,7 @@ public class Gate extends Executable
 
 		defaultWaitTime += delay;
 		output = convertToInt(tempOutput);
-		System.out.println("For the: " + label + " Gate, the output is: " + output + " for the inputs: " + in[0] + " and " + in[1] + " Delay: " + defaultWaitTime);
+		//System.out.println("For the: " + label + " Gate, the output is: " + output + " for the inputs: " + in[0] + " and " + in[1] + " Delay: " + defaultWaitTime);
 	}
 	
 	//Converts number (1 or 0) to boolean
@@ -91,6 +91,7 @@ public class Gate extends Executable
 			return 0;
 	}
 	
+	//Resets variables for clean run each time
 	public void clear()
 	{
 		output = -1;

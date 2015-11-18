@@ -1,11 +1,29 @@
 // IO Ports: (number inputs, number outputs)
+IO(3, 1)
 
 // IO Labels: (input firsts, outputs last)
+IOLABELS(A, B, C, Z)
 
 // Gates: (type, label)
+GATE(AND, AND1)
+GATE(AND, AND2)
+GATE(AND, AND3)
+GATE(AND, AND4)
+GATE(AND, AND5)
 
 // Connections from inputs to gates (inputLabel, gateLabel, portNumber)
+INPUT(A, AND1, 0)
+INPUT(B, AND1, 1)
+INPUT(B, AND2, 0)
+INPUT(C, AND2, 1)
 
 // Connections from gate to gate (outputLabel, outputPort, inputLabel, inputPort)
+CONN(AND1, 0, AND3, 0)
+CONN(AND2, 0, AND3, 1)
+CONN(AND2, 0, AND4, 0)
+CONN(AND3, 0, AND4, 1)
+CONN(AND1, 0, AND5, 0)
+CONN(AND4, 0, AND5, 1)
 
 // Connections from gates to outputs (gateLabel, portNumber, outputLabel)
+OUTPUT(AND5, 0, Z)

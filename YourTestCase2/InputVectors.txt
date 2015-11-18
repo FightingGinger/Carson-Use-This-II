@@ -1,1 +1,9 @@
 // Propagation Times Per Gate Type
+000
+001
+010
+011
+100
+101
+110
+111
