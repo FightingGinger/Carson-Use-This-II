@@ -20,12 +20,12 @@ import java.io.IOException;
 public class GatePropagationParser
 {
 	// Member variables
-	private int andPropTime;
-	private int orPropTime;
-	private int notPropTime;
-	private int nandPropTime;
-	private int norPropTime;
-	private int xorPropTime;
+	public int andPropTime;
+	public int orPropTime;
+	public int notPropTime;
+	public int nandPropTime;
+	public int norPropTime;
+	public int xorPropTime;
 	
 	//////////////////////////////////////////////////////////////////////////////////////
 	// Constructor

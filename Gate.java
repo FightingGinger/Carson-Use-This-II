@@ -3,6 +3,7 @@ public class Gate extends Executable
 {
 	private GateType gt;
 	private String label;
+	public int defaultWaitTime;
 	
 	/*
 	 * gateType is the gate type (duh) and/or/nand/nor/etc
@@ -35,13 +36,21 @@ public class Gate extends Executable
 		if (in[0] != -1 && in[1] != -1)
 			calculate();
 		else if ((in[0] != -1 || in[1] != -1) && gt == GateType.NOT)
+		{
 			calculate();
+			defaultWaitTime += delay;
+		}
 	}
 	
 	//Generic return label method so I can keep it private
 	public String getLabel()
 	{
 		return label;
+	}
+	
+	public GateType getType()
+	{
+		return gt;
 	}
 	
 	//Does the calculations on the input. Returns the output as a number ready to be plugged in again
@@ -63,7 +72,7 @@ public class Gate extends Executable
 			tempOutput = !convertToBoolean(in[0]);
 		
 		output = convertToInt(tempOutput);
-		System.out.println("For the: " + label + " Gate, the output is: " + output + " for the inputs: " + in[0] + " and " + in[1]);
+		System.out.println("For the: " + label + " Gate, the output is: " + output + " for the inputs: " + in[0] + " and " + in[1] + " Delay: " + defaultWaitTime);
 	}
 	
 	//Converts number (1 or 0) to boolean

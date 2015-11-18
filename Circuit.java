@@ -65,7 +65,7 @@ public class Circuit extends Executable
 			}
 			Gate g = gates.get(inputGateIndex);
 			
-			g.signalInput(Integer.parseInt(temp[2]), initialInput, 0);
+			g.signalInput(Integer.parseInt(temp[2]), initialInput, g.defaultWaitTime);
 			
 			gates.set(inputGateIndex, g);
 		}
@@ -102,18 +102,40 @@ public class Circuit extends Executable
 					continue;
 				else
 				{
-					gin.signalInput(Integer.parseInt(temp[2]), gout.output, 0);
+					gin.signalInput(Integer.parseInt(temp[2]), gout.output, gin.defaultWaitTime);
 				}
 			}
 		}
 		
-		System.out.println(gates.get(indexOfFinalOutput).output);
+		System.out.println("The answer: " + gates.get(indexOfFinalOutput).output + " The Delay: " + gates.get(indexOfFinalOutput).defaultWaitTime);
 		clear();
 	}
 	
 	private void addPropagationTimes(GatePropagationParser gpp)
 	{
-		
+		int delay = 0;
+		Gate gate;
+		for (int i = 0; i < gates.size(); i++)
+		{
+			gate = gates.get(i);
+			switch(gate.getType())
+			{
+			case AND:
+				delay = gpp.andPropTime;
+			case OR:
+				delay = gpp.orPropTime;
+			case NAND:
+				delay = gpp.nandPropTime;
+			case NOR:
+				delay = gpp.norPropTime;
+			case XOR:
+				delay = gpp.xorPropTime;
+			case NOT:
+				delay = gpp.notPropTime;
+			}
+			gate.defaultWaitTime = delay;
+			gates.set(i, gate);
+		}
 	}
 	
 	private void clear()
