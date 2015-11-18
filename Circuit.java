@@ -65,7 +65,7 @@ public class Circuit extends Executable
 			}
 			Gate g = gates.get(inputGateIndex);
 			
-			g.signalInput(Integer.parseInt(temp[2]), initialInput, g.defaultWaitTime);
+			g.signalInput(Integer.parseInt(temp[2]), initialInput, 0);
 			
 			gates.set(inputGateIndex, g);
 		}
@@ -102,7 +102,7 @@ public class Circuit extends Executable
 					continue;
 				else
 				{
-					gin.signalInput(Integer.parseInt(temp[2]), gout.output, gin.defaultWaitTime);
+					gin.signalInput(Integer.parseInt(temp[2]), gout.output, gout.defaultWaitTime);
 				}
 			}
 		}
@@ -122,16 +122,22 @@ public class Circuit extends Executable
 			{
 			case AND:
 				delay = gpp.andPropTime;
+				break;
 			case OR:
 				delay = gpp.orPropTime;
+				break;
 			case NAND:
 				delay = gpp.nandPropTime;
+				break;
 			case NOR:
 				delay = gpp.norPropTime;
+				break;
 			case XOR:
 				delay = gpp.xorPropTime;
+				break;
 			case NOT:
 				delay = gpp.notPropTime;
+				break;
 			}
 			gate.defaultWaitTime = delay;
 			gates.set(i, gate);

@@ -36,10 +36,7 @@ public class Gate extends Executable
 		if (in[0] != -1 && in[1] != -1)
 			calculate();
 		else if ((in[0] != -1 || in[1] != -1) && gt == GateType.NOT)
-		{
 			calculate();
-			defaultWaitTime += delay;
-		}
 	}
 	
 	//Generic return label method so I can keep it private
@@ -70,7 +67,8 @@ public class Gate extends Executable
 			tempOutput = convertToBoolean(in[0]) != convertToBoolean(in[1]);
 		else if (gt == GateType.NOT)
 			tempOutput = !convertToBoolean(in[0]);
-		
+
+		defaultWaitTime += delay;
 		output = convertToInt(tempOutput);
 		System.out.println("For the: " + label + " Gate, the output is: " + output + " for the inputs: " + in[0] + " and " + in[1] + " Delay: " + defaultWaitTime);
 	}
