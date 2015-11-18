@@ -108,10 +108,22 @@ public class Circuit extends Executable
 		}
 		
 		System.out.println(gates.get(indexOfFinalOutput).output);
+		clear();
 	}
 	
 	private void addPropagationTimes(GatePropagationParser gpp)
 	{
 		
+	}
+	
+	private void clear()
+	{
+		Gate tempGate;
+		for (int i = 0; i < gates.size(); i++)
+		{
+			tempGate = gates.get(i);
+			tempGate.clear();
+			gates.set(i, tempGate);
+		}
 	}
 }

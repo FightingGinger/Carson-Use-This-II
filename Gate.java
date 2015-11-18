@@ -83,4 +83,11 @@ public class Gate extends Executable
 		else
 			return 0;
 	}
+	
+	public void clear()
+	{
+		output = -1;
+		in[0] = -1;
+		in[1] = -1;
+	}
 }
