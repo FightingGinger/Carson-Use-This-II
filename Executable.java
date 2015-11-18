@@ -3,7 +3,7 @@ public class Executable
 {
 
 	protected int[] in = {-1, -1}; //Holds the two inputs for the circuit. If neither are -1, then both inputs are present
-	protected int output; //Holds the output for the circuit
+	protected int output = -1; //Holds the output for the circuit
 	protected int delay = -1; //Holds the biggest delay for the circuit
 	
 	//Not sure if I need this yet or not

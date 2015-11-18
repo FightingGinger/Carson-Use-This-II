@@ -26,7 +26,8 @@ public class CircuitParser
 	private int numOutputs;
 	private ArrayList<String> inputLabels;
 	private ArrayList<String> outputLabels;
-	private ArrayList<Gate> Gates;
+	private ArrayList<Gate> Gates = new ArrayList<Gate>();
+	public Circuit circuit = new Circuit();
 	
 	//////////////////////////////////////////////////////////////////////////////////////
 	// Constructor
@@ -122,6 +123,7 @@ public class CircuitParser
 					String label = params[1];
 					Gate g = new Gate(gt, label); // IMPLEMENTED
 					Gates.add(g); //Adds the gate to the array list
+					circuit.addGate(g);
 					
 				}
 				else if (lineU.startsWith(("CONN (")) || lineU.startsWith(("CONN(")))
@@ -147,6 +149,8 @@ public class CircuitParser
 					// Here, you'll need to either save this information as a new data-structure, or modify your
 					// current Gate class to be able to represent the connections (HINT: something like outGate.children.add(inGate))
 					
+					circuit.addConnection(inGateLabel, outGateLabel, Integer.toString(inGatePortNum));
+					
 				}
 				else if (lineU.startsWith(("INPUT (")) || lineU.startsWith(("INPUT(")))
 				{
@@ -169,6 +173,8 @@ public class CircuitParser
 					int inGatePortNum = Integer.parseInt(params[2]);
 					// Here, you'll need to either save this information as a new data-structure, or modify your
 					// current Circuit class to be able to represent the connections (HINT: something like circuit.inputAt[inputCircuitLabel].children.add(inGate))
+					
+					circuit.addInput(inputCircuitLabel, inGateLabel, Integer.toString(inGatePortNum));
 				}
 				else if (lineU.startsWith(("OUTPUT (")) || lineU.startsWith(("OUTPUT(")))
 				{
@@ -191,6 +197,8 @@ public class CircuitParser
 					String outputCircuitLabel = params[2];					
 					// Here, you'll need to either save this information as a new data-structure, or modify your
 					// current Circuit/Gate class to be able to represent the connections (HINT: something like outGate.circuitOutChildren.add(outputCircuitLabel))
+					
+					circuit.addOutput(outputCircuitLabel, outGateLabel, Integer.toString(outGatePortNum));
 				}
 				else if (!(line.isEmpty() || line.startsWith("//")))
 				{

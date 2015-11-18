@@ -16,6 +16,12 @@ public class Gate extends Executable
 		
 	}
 	
+	//Generic constructor so I don't need to initialize anything
+	public Gate()
+	{
+		
+	}
+	
 	//OVERRIDDEN BITCH!!!!!!!!!
 	public void signalInput(int inputNumber, int value, int runningDelay)
 	{
@@ -25,8 +31,10 @@ public class Gate extends Executable
 		if (runningDelay > delay)
 			delay = runningDelay;
 		
-		//Both inputs are full
+		//Both inputs are full or if one is full and the gate is a not gate
 		if (in[0] != -1 && in[1] != -1)
+			calculate();
+		else if ((in[0] != -1 || in[1] != -1) && gt == GateType.NOT)
 			calculate();
 	}
 	
@@ -55,6 +63,7 @@ public class Gate extends Executable
 			tempOutput = !convertToBoolean(in[0]);
 		
 		output = convertToInt(tempOutput);
+		System.out.println("For the: " + label + " Gate, the output is: " + output + " for the inputs: " + in[0] + " and " + in[1]);
 	}
 	
 	//Converts number (1 or 0) to boolean

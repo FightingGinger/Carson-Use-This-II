@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*------------------------Class/Implementation Details--------------------------*
  * Azusa Pacific University, CS 445 - Computer Organization & Architecture		*
  * Source: CircuitParser.java (HardwareParser)									*
@@ -15,7 +17,7 @@ public class Main
 	{
 		/////////////////////////////////////////////////////////////////
 		// Name/project info
-		System.out.println("Josh Dubisz & Carson Hall");
+		System.out.println("Josh Dubisz & Carson Hall & Daniel Nishijima");
 		System.out.println("CS445 Project 2 - Boolean Gate Simulator");
 		System.out.println("");
 
@@ -28,6 +30,13 @@ public class Main
 		CircuitParser cp = new CircuitParser("Circuit.txt");
 		GatePropagationParser gpp = new GatePropagationParser("PropagationTimes.txt");
 		InputVectorParser ivp = new InputVectorParser("InputVectors.txt");
+		
+		Circuit circuit = cp.circuit;
+		for (int i = 0; i < ivp.inputVectors.size(); i++)
+		{
+			int[] inputs = {Integer.parseInt(ivp.inputVectors.get(i).get(0).toString()), Integer.parseInt(ivp.inputVectors.get(i).get(1).toString()), Integer.parseInt(ivp.inputVectors.get(i).get(2).toString())};
+			circuit.compute(gpp, inputs);
+		}
 		
 		System.out.println("Exiting Boolean Gate Simulator");
 
